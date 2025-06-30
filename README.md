@@ -1,32 +1,19 @@
-# Dream11-Prediction
+# 🏏 Dream11 Fantasy Team Predictor
 
-Input (Playing XI):
-  Took an Excel file with the playing XI for a specific match.
-  Each player had a role (BAT, BOWL, WK, ALL).
+This app predicts individual player performance for Dream11 fantasy cricket and recommends the best 11-player team based on predicted stats and official scoring rules.
 
-Web Scraping:
-  For each player, used their unique ESPN Cricinfo ID to scrape:
-  Batting stats (e.g., Runs, 4s, 6s, SR)
-  Bowling stats (e.g., Wickets, Economy)
-  Fielding stats (e.g., Catches, Stumpings)
+## 🚀 How to Use
 
-Feature Engineering:
-  Cleaned and preprocessed raw stats.
-  Applied a 3-match moving average to smooth noisy data.
+1. **Upload Input File**: Provide an Excel file named `SquadPlayerNames_IndianT20League.xlsx` with a sheet named `Match_<number>` (e.g., `Match_57`) and a column `IsPlaying` marked as "PLAYING". Available in my repository for 2025 season.
+2. **Hit Predict**: The app scrapes player stats from Cricinfo, forecasts their next performance using linear regression, and calculates fantasy scores.
+3. **Get Final Team**: The app returns the top 11 players with captain (C) and vice-captain (VC) assigned, and allows you to download the results.
 
-Prediction:
-  Used lag-1 Linear Regression (simple autoregression) to forecast next-match stats for each player.
+## 📦 Tech Stack
 
-Scoring:
-  Applied official Dream11 scoring rules to predicted stats.
-  Calculated a total Dream11 score for each player.
-
-Team Selection Logic:
-  Selected top players based on score.
-  Enforced team constraints:
-  At least one from each role
-  At least one from each team
-  Picked top player as Captain, second as Vice-Captain.
-
-Output: Saved the final team to CricTensors_Output.csv.
+- Python, Pandas, NumPy, Scikit-learn
+- Web scraping with BeautifulSoup
+- Streamlit for deployment
+  
+## 📄 Output
+- `CricTensors_Output.csv`: Final team with roles and scores
 
